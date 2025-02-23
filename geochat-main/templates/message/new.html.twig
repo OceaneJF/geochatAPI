@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% form_theme form _self %}
+{% use 'message/_widgets.html.twig' %}
+
+{% block title %}Ajouter un message{% endblock %}
+
+
+{% block body %}
+<h2>Ajouter un message</h2>
+
+{{ include('message/_form.html.twig') }}
+{% endblock %}

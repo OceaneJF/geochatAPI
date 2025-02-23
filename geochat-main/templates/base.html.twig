@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Geochat
+			{% endblock %}
+		</title>
+		<link rel="icon" href="{{ asset('favicon.ico') }}">
+		{% block stylesheets %}
+			<link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}"/>
+            <link rel="stylesheet" href="{{ asset('leaflet/leaflet.css') }}"/>
+		{% endblock %}
+
+		{% block javascripts %}
+			<script type="text/javascript" src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('leaflet/leaflet.js') }}"></script>
+		{% endblock %}
+	</head>
+	<body class="mb-4" onLoad="onBodyLoad()">
+		<nav class="navbar navbar-expand-lg bg-primary navbar-dark mb-3">
+			<div class="container">
+				<a class="navbar-brand" href="{{ path('home') }}">
+					<img src="{{ asset('map.png') }}" width="32"/>
+					Geochat
+				</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="{{ path('app_message_index') }}">Messages</a>
+						</li>
+                        <li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="{{ path('app_message_map') }}">Carte</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<div class="container"> {% block body %}{% endblock %}
+			</div>
+		</body>
+	</html>

@@ -1,0 +1,10 @@
+{% block _message_longitude_widget %}
+	<div class="input-group mb-3">
+		{{ block('form_widget_simple') }}
+		<span class="input-group-text" id="basic-addon1">°</span>
+	</div>
+{% endblock %}
+
+{% block _message_latitude_widget %}
+    {{ block('_message_longitude_widget') }}
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Message index{% endblock %}
+
+{% block body %}
+    <h2>Carte</h2>
+
+    <div id="map" class="w-100" style="height:400px">
+    </div>
+{% endblock %}
+
+
+{% block javascripts %}
+{{ parent() }}
+<script>
+    function onBodyLoad() {
+        var map = L.map('map').setView([44.82, -0.5], 11);
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+   
+        {% for message in messages %}
+            L.marker([{{ message.latitude }}, {{ message.longitude }}]).addTo(map)
+                .bindPopup("<b>{{ message.text|escape("js") }}</b><br/><em>lng: {{ message.longitude }}, lat: {{ message.latitude }}</em>")
+                ;
+        {% endfor %}
+    }
+</script>
+{% endblock %}

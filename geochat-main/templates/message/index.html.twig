@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Messages{% endblock %}
+
+{% block body %}
+
+<a href="{{path('app_message_find_addresses')}}">Touver addresses</a>
+
+
+<h2>Messages</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Lng/Lat</th>
+            <th>Adresse</th>
+            <th>Texte</th>
+            <th>actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for message in messages %}
+        <tr>
+            <td class="col-sm-3">
+                <kbd>{{ message.longitude|number_format(7) }}, {{ message.latitude|number_format(7) }}</kbd>
+            </td>
+            <td class="col-sm-3">
+                <kbd>{{ message.address }}</kbd>
+            </td>
+            <td>
+                <code>{{ message.text }}</code>
+            </td>
+            <td class="col-sm-4">
+                <a class="btn btn-primary" href="{{ path('app_message_edit', {'id': message.id}) }}">éditer</a>
+                {{ include('message/_delete_form.html.twig') }}
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="5">Aucun message trouvé</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="d-flex justify-content-center">
+    <a class="btn btn-success" href="{{ path('app_message_new') }}">Créer</a>
+</div>
+{% endblock %}

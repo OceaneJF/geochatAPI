@@ -1,0 +1,42 @@
+{{ form_start(form) }}
+{{ form_row(form.text, {'label': 'Texte', 'attr': {'rows': 6}}) }}
+{% if errorAdress %}
+	<div class="alert alert-danger">
+		L'adresse n'est pas trouvé
+	</div>
+{% endif %}
+<hr/>
+<div class="row mb-2">
+	<div class="col-lg-2">
+		&nbsp;
+	</div>
+	<div class="col-lg-10">
+		La
+		<kbd>longitude</kbd>
+		et la
+		<kbd>latitude</kbd>
+		sont deux angles exprimés en degrés. Ils représentent une position géographique sur une
+		<em>sphère</em>.
+					La
+		<kbd>longitude</kbd>
+		est l'angle entre le
+		<a href="https://fr.wikipedia.org/wiki/Premier_m%C3%A9ridien">méridien de Greenwich</a>
+		et la position cible (entre -180 et 180), et la
+		<kbd>latitude</kbd>
+		est l'angle entre l'équateur et la position cible (entre -90 et 90).
+		<br/>
+		<img src="{{ asset('lnglat.png') }}" width="480"/>
+	</div>
+</div>
+
+
+{{ form_row(form.address, {'label': 'address'}) }}
+
+<div class="row">
+	<div class="col-sm-2">&nbsp;</div>
+	<div class="col-sm-10">
+		<button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+	</div>
+</div>
+
+{{ form_end(form) }}

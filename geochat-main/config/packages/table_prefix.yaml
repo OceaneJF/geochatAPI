@@ -1,0 +1,8 @@
+parameters:
+      table_prefix:
+          entity: ~
+
+when@test:
+  parameters:
+      table_prefix:
+          entity: test_

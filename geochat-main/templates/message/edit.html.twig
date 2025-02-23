@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form _self %}
+{% use 'message/_widgets.html.twig' %}
+
+{% block title %}Éditer un message{% endblock %}
+
+{% block body %}
+    <h2>Éditer un message</h2>
+
+    {{ include('message/_form.html.twig') }}
+
+{% endblock %}
